@@ -1,0 +1,25 @@
+{ 
+  "name": "croche",
+  "id": "croche",
+  "version": "0.0.1",
+  "description": "Remote thumbnail generator with cache system.",
+  "keywords": [ "thumbnails", "crop", "cache", "images" ],
+  "author": {
+    "name": "Vincent Battaglia",
+    "email": "vincent.battaglia@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vinch/croche.git",
+    "web": "https://github.com/vinch/croche"
+  },
+  "bugs": {
+    "url": "http://github.com/vinch/croche/issues/"
+  },
+  "dependencies": {
+    "crypto": "0.0.3",
+    "imagemagick": "0.1.2",
+    "mime": "1.2.5"
+  },
+  "devDependencies": {}
+}

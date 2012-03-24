@@ -9,8 +9,8 @@ var mime = require('mime');
 
 var HttpException = function (request, response, message, code) {
   this.request = request;
-  this.response = response;  
-  this.message = message;    
+  this.response = response;
+  this.message = message;
   this.code = code || 500;
 }
 

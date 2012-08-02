@@ -29,12 +29,12 @@ After that, you're ready to go! Just start the server:
 
 ## Usage
 
-Go to that URL: http://localhost:3333/resize
+Go to that URL: [http://localhost:3333/resize](http://localhost:3333/resize)
 
 It accepts the following parameters:
 
-- **url**: URL of the image
-- **width**: desired width of the result (optional, default 320)
-- **height**: desired height of the result (optional, default 240)
+- **url**: URL of the image (URL-encoded)
+- *width*: desired width of the result (optional, default 320)
+- *height*: desired height of the result (optional, default 240)
 
-Example: http://localhost:3333/resize?url=http://www.vinch.be/attic/me.jpg&width=120&height=95
+Example: [http://localhost:3333/resize?url=http%3A%2F%2Fwww.vinch.be%2Fattic%2Fme.jpg&width=120&height=95](http://localhost:3333/resize?url=http%3A%2F%2Fwww.vinch.be%2Fattic%2Fme.jpg&width=120&height=95)

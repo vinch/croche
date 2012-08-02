@@ -56,7 +56,7 @@ http.createServer(function(request, response) {
     var height = (pu.query.height) ? pu.query.height : 240;
 
     var mimeType = mime.lookup(srcPath);
-    var dstPath = 'cache/' + crypto.createHash('md5').update(width+height+srcPath).digest('hex');
+    var dstPath = 'cache/' + crypto.createHash('md5').update(width+'-'+height+'-'+srcPath).digest('hex');
     
     fs.exists(dstPath, function (exists) {
       

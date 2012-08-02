@@ -1,11 +1,25 @@
 var fs = require('fs');
 var http = require('http');
-var path = require('path');
 var url = require('url');
 
 var crypto = require('crypto');
 var im = require('imagemagick');
 var mime = require('mime');
+
+/* LOCAL FUNCTIONS */
+
+var croche = {};
+croche.serveFromCache = function(request, response, dstPath, mimeType) {
+  fs.readFile(dstPath, function(err, data) {
+    if (err) throw new HttpException(request, response, err.message);
+        
+    response.writeHead(200, {'Content-Type': mimeType});  
+    response.write(data, 'binary');
+    response.end();
+  });
+};
+
+/* ERROR HANDLING */
 
 var HttpException = function (request, response, message, code) {
   this.request = request;
@@ -19,6 +33,8 @@ process.on('uncaughtException', function (exception) {
   exception.response.writeHead(exception.code, {'Content-Type': 'text/plain'});  
   exception.response.end(exception.message);
 });
+
+/* SERVER */
 
 http.createServer(function(request, response) {
   var pu = url.parse(request.url, true);
@@ -36,13 +52,13 @@ http.createServer(function(request, response) {
     }
 
     var srcPath = pu.query.url;
-    var width = (pu.query.width) ? pu.query.width : 150;
-    var height = (pu.query.height) ? pu.query.height : 150;
+    var width = (pu.query.width) ? pu.query.width : 320;
+    var height = (pu.query.height) ? pu.query.height : 240;
 
     var mimeType = mime.lookup(srcPath);
     var dstPath = 'cache/' + crypto.createHash('md5').update(width+height+srcPath).digest('hex');
     
-    path.exists(dstPath, function (exists) {
+    fs.exists(dstPath, function (exists) {
       
       if (!exists) {
         im.crop({
@@ -54,24 +70,11 @@ http.createServer(function(request, response) {
         function(err, stdout, stderr) {
           if (err) throw new HttpException(request, response, err.message);
           
-          fs.readFile(dstPath, function(err, data) {
-            if (err) throw new HttpException(request, response, err.message);
-        
-            response.writeHead(200, {'Content-Type': mimeType});  
-            response.write(data, 'binary');
-            response.end();
-          });
+          croche.serveFromCache(request, response, dstPath, mimeType);
         });
       }
       else {
-        // TODO: clean duplicate code here
-        fs.readFile(dstPath, function(err, data) {
-          if (err) throw new HttpException(request, response, err.message);
-        
-          response.writeHead(200, {'Content-Type': mimeType});  
-          response.write(data, 'binary');
-          response.end();
-        });
+        croche.serveFromCache(request, response, dstPath, mimeType);
       }
       
     });    
@@ -80,4 +83,6 @@ http.createServer(function(request, response) {
     throw new HttpException(request, response, 'Page not found.', '404');
   }
   
-}).listen(3333);
+}).listen(3333, function() {
+  console.log('croche server started and listening on port 3333');
+});

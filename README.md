@@ -1,7 +1,44 @@
-croche is a remote thumbnail generator with cache system.
+![croche](https://raw.github.com/vinch/croche/master/croche.png)
 
-### USAGE
+**croche** is a very simple remote thumbnail generator with a very simple cache system.
 
-http://localhost:3333/resize?url=[IMAGE_URL]&width=[WIDTH]&height=[HEIGHT]
+## Prerequisites
 
-width and height are both optional (default: 150)
+We assume you have the following tools already installed:
+
+- Node.js (if not → http://nodejs.org/#download)
+- Homebrew (if not → http://mxcl.github.com/homebrew/)
+
+## Installation
+
+First of all, you need to install imagemagick on your server:
+
+  brew install imagemagick
+
+After, that, just clone the project wherever you want:
+
+  git clone git@github.com:vinch/croche.git
+
+Go to the newly created folder and download all the dependencies:
+
+  npm install
+
+After that, you're ready to go! Just start the server:
+
+  node .
+
+## Usage
+
+Go to that URL:
+
+  http://localhost:3333/resize
+
+It accepts the following parameters:
+
+url: URL of the image
+width: desired width of the result (optional, default 320)
+height: desired height of the result (optional, default 240)
+
+Example:
+
+  http://localhost:3333/resize?url=http://www.vinch.be/attic/me.jpg&width=120&height=95

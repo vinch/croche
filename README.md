@@ -13,32 +13,28 @@ We assume you have the following tools already installed:
 
 First of all, you need to install imagemagick on your server:
 
-  brew install imagemagick
+    brew install imagemagick
 
 After, that, just clone the project wherever you want:
 
-  git clone git@github.com:vinch/croche.git
+    git clone git@github.com:vinch/croche.git
 
 Go to the newly created folder and download all the dependencies:
 
-  npm install
+    npm install
 
 After that, you're ready to go! Just start the server:
 
-  node .
+    node .
 
 ## Usage
 
-Go to that URL:
-
-  http://localhost:3333/resize
+Go to that URL: http://localhost:3333/resize
 
 It accepts the following parameters:
 
-url: URL of the image
-width: desired width of the result (optional, default 320)
-height: desired height of the result (optional, default 240)
+- **url**: URL of the image
+- **width**: desired width of the result (optional, default 320)
+- **height**: desired height of the result (optional, default 240)
 
-Example:
-
-  http://localhost:3333/resize?url=http://www.vinch.be/attic/me.jpg&width=120&height=95
+Example: http://localhost:3333/resize?url=http://www.vinch.be/attic/me.jpg&width=120&height=95

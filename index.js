@@ -52,8 +52,8 @@ http.createServer(function(request, response) {
     }
 
     var srcPath = pu.query.url;
-    var width = (pu.query.width) ? pu.query.width : 320;
-    var height = (pu.query.height) ? pu.query.height : 240;
+    var width = pu.query.width || 320;
+    var height = pu.query.height || 240;
 
     var mimeType = mime.lookup(srcPath);
     var dstPath = 'cache/' + crypto.createHash('md5').update(width+'-'+height+'-'+srcPath).digest('hex');

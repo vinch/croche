@@ -83,6 +83,6 @@ http.createServer(function(request, response) {
     throw new HttpException(request, response, 'Page not found.', '404');
   }
   
-}).listen(3333, function() {
+}).listen(process.env.PORT || 3333, function() {
   console.log('croche server started and listening on port 3333');
 });

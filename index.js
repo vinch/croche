@@ -45,7 +45,7 @@ http.createServer(function(request, response) {
     return;
   }
   
-  if (pu.pathname === '/resize') {
+  if (pu.pathname === '/') {
     
     if (!pu.query.url) {
       throw new HttpException(request, response, 'Please specify the URL of the image you want to resize.');

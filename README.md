@@ -29,7 +29,7 @@ After that, you're ready to go! Just start the server:
 
 ## Usage
 
-Go to that URL: [http://localhost:3333/resize](http://localhost:3333/resize)
+Go to that URL: [http://localhost:3333/](http://localhost:3333/)
 
 It accepts the following parameters:
 

@@ -19,7 +19,7 @@
   "dependencies": {
     "crypto": "0.0.3",
     "imagemagick": "0.1.2",
-    "mime": "1.2.5"
+    "mime": "2.4.4"
   },
   "devDependencies": {}
 }
